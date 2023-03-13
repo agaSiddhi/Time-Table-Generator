@@ -2,12 +2,12 @@
 <html lang="en" >
 <head>
   <meta charset="UTF-8">
-  <title>Academic Calender</title>
-  <link rel="stylesheet" href="style.css">
+  <title>Time Table Generator</title>
+  <link rel="stylesheet" href="../static/style.css">
 </head>
 <body>
     
-        <h1 style="color:aliceblue; font-size:4em; font-weight:bold; font: Arial"> Academic Calender Generator</h1>
+    <h1 style="color:aliceblue; font-size:4em; font-weight:bold; font: Arial"> Academic Calender Generator</h1>
         
      
     <dl class="dropdown">
@@ -17,26 +17,22 @@
                 <p class="list"></p>
             </a>
         </dt>
+        <form action="/check_clash" method="POST">
         <dd>
             <div class="multiselect">
                 <ul>
-                    <li><input type="checkbox" value="Course1" />Course1</li>
-                    <li><input type="checkbox" value="Course2" />Course2</li>
-                    <li><input type="checkbox" value="Course3" />Course3</li>
-                    <li><input type="checkbox" value="Course4" />Course4</li>
-                    <li><input type="checkbox" value="Course5" />Course5</li>
-                    <li><input type="checkbox" value="Course6" />Course6</li>
-                    <li><input type="checkbox" value="Course7" />Course7</li>
-                    <li><input type="checkbox" value="Course8" />Course8</li>
-                    <li><input type="checkbox" value="Course9" />Course9</li>
+                    {% for i in courses %}
+                        <li><input type="checkbox" value={{i}} name="course_checkbox"/>{{i}}</li>
+                    {% endfor %}
                 </ul>
             </div>
         </dd>
-        <button>Submit</button>
+        <input id="button" type="submit">
+        </form>
     </dl>
 
 <script src='https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js'></script>
-<script  src="script.js"></script>
+<script  src="../static/script.js"></script>
 
 </body>
 </html>
