@@ -17,7 +17,7 @@
             justify-content: center;
         }
 
-        table_container {
+        .table_container {
             display: flex;
             align-items: center;
             justify-content: center;
@@ -38,7 +38,9 @@
                 <tr>
                     <td>{{df.index[i]}}</td>
                     {% for j in range(df.shape[1]) %}
-                    <td>{{df.iloc[i,j]}}</td>
+                    <td>
+                        {{df.iloc[i,j] | replace('$', '<br>') | safe}}
+                    </td>
                     {% endfor %}
                 </tr>
             {% endfor %}
