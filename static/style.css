@@ -1,0 +1,76 @@
+body{
+    font-family: Arial, Helvetica, sans-serif;
+    background: #23242a;
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+}
+.dropdown{
+    min-width: 15em;
+    position: relative;
+    margin: 2em;
+}
+.dropdown dd, .dropdown dt{
+    margin: 0;
+    padding: 0;
+}
+.dropdown ul{
+    margin: -1 0 0 0;
+}
+.dropdown dd{
+    position: relative;
+}
+.dropdown a, .dropdown a:visited{
+    text-decoration: none;
+    outline: none;
+    font-size: 16px;
+    border-radius: 15px;
+    color: #fff;
+}
+.dropdown dt a{
+    background-color: #2a2f3b;
+    display: block;
+    padding: 8px 20px 5px 10px;
+    width: 275px;
+    min-height: 25px;
+    line-height: 24px;
+    border: 0;
+    overflow: hidden;
+    text-align: center;
+    letter-spacing: 2px;
+}
+.dropdown dd ul{
+    background-color: #2a2f3b;
+    border-radius: 15px;
+    margin-top: 5%;
+    color: #fff;
+    list-style: none;
+    left: 0;
+    padding: 15px;
+    top: 2px;
+    position: absolute;
+    width: 280px;
+    height: 100px;
+    overflow: auto;
+    opacity: 0.7;
+    display: none;
+}
+#button{
+    width: 302px;
+    margin: 15px 0;
+    background-color: transparent;
+    border: 2px solid #26489a;
+    padding: 10px;
+    border-radius: 15px;
+    font-weight: bold;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    color: #26489a;
+    transition: 0.5s all;
+}
+#button:hover{
+    background-color: #323741;
+    color: #fff;
+}
