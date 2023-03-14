@@ -1,4 +1,5 @@
 from flask import Flask, render_template
+
 import json
 import pandas as pd
 import numpy as np
@@ -12,9 +13,9 @@ with open('slots.json') as f:
 
 app = Flask(__name__)
 
-@app.route('/')
-def index():
-    return render_template('index.html')
+@app.route('/', methods=['GET', 'POST'])
+def home():
+    return render_template('index.html', courses=courses.keys())
 
 def validate_input(inp, course_list, course_details):
     try:
