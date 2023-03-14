@@ -1,12 +1,39 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" >
 <head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Time Table Generator</title>
+  <meta charset="UTF-8">
+  <title>Time Table Generator</title>
+  <link rel="stylesheet" href="../static/style.css">
 </head>
 <body>
-    <h1>Template</h1>
+    
+    <h1 style="color:aliceblue; font-size:4em; font-weight:bold; font: Arial"> Academic Calender Generator</h1>
+        
+     
+    <dl class="dropdown">
+        <dt>
+            <a href="#">
+                <span class="hide">Select</span>
+                <p class="list"></p>
+            </a>
+        </dt>
+        <form action="/check_clash" method="POST">
+        <dd>
+            <div class="multiselect">
+                <ul>
+                    {% for i in courses %}
+                        <li><input type="checkbox" value={{i}} name="course_checkbox"/>{{i}}</li>
+                    {% endfor %}
+                </ul>
+            </div>
+        </dd>
+        <input id="button" type="submit">
+        </form>
+    </dl>
+
+<script src='https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js'></script>
+<script  src="../static/script.js"></script>
+
 </body>
+
 </html>

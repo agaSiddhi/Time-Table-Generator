@@ -1,7 +1,6 @@
 from flask import Flask, render_template, request
 import json
 import pandas as pd 
-import numpy as np
 
 with open('courses.json') as f:
     courses = json.load(f)
@@ -14,7 +13,6 @@ app = Flask(__name__)
 @app.route('/', methods=['GET', 'POST'])
 def home():
     return render_template('index.html', courses=courses.keys())
-
 
 @app.route('/check_clash', methods=['GET', 'POST'])
 def check_clash():
@@ -69,6 +67,51 @@ def book_slot(df, slots, course_code, course_details):
                 df.loc[slot_data[0]["day"], mid[1]+"-"+slot_data[0]['end']]=cell_data
         else:
             return 
+            
+def validate_input(inp, course_list, course_details):
+    try:
+        inp_details=course_details[inp]
+    except:
+        print("Course doesnot exist")
+        return False
+    
+    inp_slot=inp_details['slot']
+    inp_fractal=inp_details['fractal']
+    
+    if inp_slot=="NA" or inp_fractal=="NA":
+        return True
+    
+    inp_fractal=convert_fractal_to_list(inp_fractal)
+    
+    for course in course_list:
+        if course==inp:
+            print('Course have been added before')
+            return False
+        curr_course_details=course_details[course]
+        curr_course_slot=curr_course_details['slot']
+        
+        if curr_course_details['fractal']=="NA" or curr_course_slot=="NA":
+            continue
+        
+        curr_course_fractal=convert_fractal_to_list(curr_course_details['fractal'])
+        
+        if curr_course_slot==inp_slot and len(Intersection(curr_course_fractal, inp_fractal))!=0:
+            print(f'course {inp} and {course} clash!!!')
+            return False
+        else:
+            continue
+            
+    return True
+
+def convert_fractal_to_list(fractal):
+    converted_fractal=[]
+    for i in range(int(fractal[0]), int(fractal[1])+1): 
+        converted_fractal.append(i)
+    return converted_fractal
+
+
+def Intersection(lst1, lst2):
+    return list(set(lst1) & set(lst2))
 
 if __name__ == '__main__':
     app.run(debug=True)
