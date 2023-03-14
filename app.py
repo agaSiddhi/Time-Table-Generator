@@ -2,10 +2,10 @@ from flask import Flask, render_template, request
 import json
 import pandas as pd 
 
-with open('courses.json') as f:
+with open('./data/courses.json') as f:
     courses = json.load(f)
 
-with open('slots.json') as f:
+with open('./data/slots.json') as f:
     slots = json.load(f)
 
 app = Flask(__name__)
